@@ -35,6 +35,7 @@ if ('development' == app.get('env')) {
 
 app.get('/todo/:id', routes.id(Todo));
 app.get('/test', routes.test(Todo));
+app.get('/pup', routes.pup(Todo));
 app.get('/', routes.index(Todo));
 app.get('/users', user.list);
 app.get('/todos.json', routes.get(Todo));

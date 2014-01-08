@@ -55,6 +55,7 @@ exports.test = function(Todo) {
 
 exports.pup = function(Todo) {
 //this isn't doing anything. Only the sendfile at the bottom is working.
+console.log("start");
   return function(req, res) {
 	 var request = require('request');
 	 var options = {
