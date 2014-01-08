@@ -53,6 +53,31 @@ exports.test = function(Todo) {
   }
 };
 
+exports.pup = function(Todo) {
+//this isn't doing anything. Only the sendfile at the bottom is working.
+  return function(req, res) {
+	 var request = require('request');
+	 var options = {
+		url: 'http://uploadtest.digitalink.com/photo-uploader/api/createMediaSet',
+		headers: {
+			'User-Agent': 'request'
+		}
+	};
+
+	function callback(error, response, body) {
+		if (!error && response.statusCode == 200) {
+			console.log(error);
+			console.log(response);
+			console.log(body);
+			
+		}
+	}
+	request(options, callback);
+    //res.sendfile('pup.html');
+	res.sendfile('views/pup.html');
+  }
+};
+
 
 exports.update = function(Todo) {
   return function(req, res) {
