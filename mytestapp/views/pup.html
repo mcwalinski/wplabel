@@ -1,59 +1,27 @@
 <head> 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="javascripts/vendor/angular/angular.js"></script>
+
+	<script src="javascripts/controllers/PupController.js"></script>
+
+	<script src="javascripts/vendor/cryptojs/components/core.js"></script>
+	<script src="javascripts/vendor/cryptojs/components/sha256.js"></script>
+	<script src="javascripts/vendor/cryptojs/components/enc-base64.js"></script>
 </head> 
 
-<div class="ng-app">This is where PUP goes</div> 
+<div ng-app="formApp" ng-controller="formController">
+	<span>
+		Form Data:
+		<br>
+		{{ formData }}
+		<br>
+	</span>
 
-{"approvalRequired":"0",
-"creatorMediaSetIdentifier":"1234",
-"numOnlinePhotos":"1",
-"creatorName":"wplabel",
-"expirationDate":"2014-11-30 09:55:54.0",
-"hasPrint":false}
-
-<script src="javascripts/vendor/cryptojs/components/core.js"></script>
-<script src="javascripts/vendor/cryptojs/components/sha256.js"></script>
-<script src="javascripts/vendor/cryptojs/components/enc-base64.js"></script>
-
-<script>
-	$(document).ready(function() {
-		//get mediasetid
-		ms = getMediaset();
-	})
-	function getMediaset() {
-		//dummy data
-		var creatorName = "whiteLabel";
-		var creatorMSID = "112517";
-		var pupSalt = "test1234salt";
-	
-		//create secure header
-		var hash = CryptoJS.SHA256(creatorName + creatorMSID + pupSalt);
-		var header = hash.toString(CryptoJS.enc.Base64);
-		console.log("header: " + header);
-	
-		//Request Json
-		var data = "approvalRequired=0" +
-			"&creatorMediaSetIdentifier=" + creatorMSID +
-			"&numOnlinePhotos=1" +
-			"&creatorName=" + creatorName +
-			"&expirationDate=2014-11-30 09:55:54.0" +
-			"hasPrint=false";
-
-		//Post request to PUP
-		$.ajax({
-			type: "POST",
-			url: "http://uploadtest.digitalink.com/photo-uploader/api/createMediaSet",
-			data: data,
-			dataType: "json",
-			success: function(response){
-				console.log(response);
-				return "mediasetIDHere";
-			},
-			error: function(response){
-				console.log(response);
-			}
-		})
-		return false;
-	}
-</script>
+	<!-- FORM -->
+	<form ng-submit="processForm()">
+		<!-- SUBMIT BUTTON -->
+		<button type="submit" class="btn btn-success btn-lg btn-block">
+			Submit!
+		</button>
+	</form>
+</div>

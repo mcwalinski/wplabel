@@ -1,0 +1,25 @@
+<head> 
+	<title>All Submissions</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="/javascripts/vendor/angular/angular.js"></script>
+	<script src="/javascripts/controllers/idController.js"></script>
+	
+	<link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+</head> 
+
+<body ng-controller="mainController">
+
+<div class="container">
+    <div id="person-form">
+        <form>
+            <h3>Current Item:</h3>
+            <ul ng-repeat="todo in todos">
+                <li> {{todo.text + " || ID: " + todo._id}} </li>
+                <button ng-click="deleteTodo(todo._id)">Delete</button>
+            </ul>
+
+        </form>
+    </div>
+</div>
+
+</body>

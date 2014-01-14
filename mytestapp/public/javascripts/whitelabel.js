@@ -10,31 +10,26 @@ var whiteLabel = ("http://localhost:3000/todos.json");
 console.debug(whiteLabel);
 
 // Assign handlers immediately after making the request, and remember the locationJson object for this request
-var whiteJson = $.getJSON(whiteLabel, function() {
-  console.log( "success" );
-  console.log(whiteJson);
-  console.log(whiteJson.responseText);
-  var string = JSON.stringify(whiteJson);
-  console.log(string);
+ var whiteJson = $.getJSON(whiteLabel, function() {
 
-// var data = angular.fromJson(whiteJson);
+ // var data = angular.fromJson(whiteJson.responseJSON.todos);
+ // console.log(data);
+
+// Angular forEach
+ var data = angular.fromJson(whiteJson.responseJSON.todos);
+ var log = [];
+ angular.forEach(data, function(value, key){
+	angular.forEach(value, function(value, key){
+       this.push( key +': ' + value);
+	}, log);
+ });
+ console.log(log);
+
+ //Populate NG
+ $('.ng-app').text(log);
+
 })
   
-  .fail(function() {
-    console.log( "error" );
-  });
-
-// Parse Response
-
-//Populate NG
-$('.ng-app').text(whiteLabel);
-
-// angular.fromJson(whiteLabel);
-
-// Angular Test
-var values = {name: 'matt', pup: 'yes'};
-var log = [];
-angular.forEach(values, function(value, key){
-  this.push(key + ': ' + value);
-}, log);
-console.log(log);
+.fail(function() {
+console.log( "error" );
+});

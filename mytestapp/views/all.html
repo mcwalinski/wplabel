@@ -1,0 +1,36 @@
+<head> 
+	<title>All Submissions</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="javascripts/vendor/angular/angular.js"></script>
+	<script src="javascripts/controllers/AllController.js"></script>
+	
+	<link rel="stylesheet" href="stylesheets/style.css" type="text/css">
+</head> 
+
+<div ng-app="myApp" ng-controller="MainCtrl">
+    <h2>{{name}}</h2>
+    <!-- {{modelData}} -->
+    <!-- {{modelData.todos[1].description}} -->
+	<ul>
+		<h3> All Submissions </h3>	
+		<div ng-repeat="(key, value) in modelData.todos">
+	        <li>
+	        	<p>
+	        		<span> Submission Id: </span> {{key}} 
+	        	</p> 
+	        	<p>
+	        		<span class="info"> Submission Description: </span>
+	        		{{value.description}}
+	        	</p>
+	        	<p>
+	        		<span class="info"> Submission Submitted: </span>
+	        		{{value.due}}
+	        	</p>
+	        	<p>
+	        		<span class="info"> Approved: </span>
+	        		{{value.done}}
+	        	</p>
+	        </li>
+	     </div>
+	</ul>
+</div>

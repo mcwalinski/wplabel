@@ -37,7 +37,7 @@ exports.get = function(Todo) {
 
 exports.id = function(Todo) {
   return function(req, res) {
-    res.send(req.params.id);
+    res.sendfile('views/id.html');
   }
 };
 
@@ -53,29 +53,27 @@ exports.test = function(Todo) {
   }
 };
 
-exports.pup = function(Todo) {
-//this isn't doing anything. Only the sendfile at the bottom is working.
-console.log("start");
+exports.all = function(Todo) {
   return function(req, res) {
-	 var request = require('request');
-	 var options = {
-		url: 'http://uploadtest.digitalink.com/photo-uploader/api/createMediaSet',
-		headers: {
-			'User-Agent': 'request'
-		}
-	};
+    res.sendfile('views/all.html');
+  }
+};
 
-	function callback(error, response, body) {
-		if (!error && response.statusCode == 200) {
-			console.log(error);
-			console.log(response);
-			console.log(body);
-			
-		}
-	}
-	request(options, callback);
-    //res.sendfile('pup.html');
-	res.sendfile('views/pup.html');
+exports.approved = function(Todo) {
+  return function(req, res) {
+    res.sendfile('views/approved.html');
+  }
+};
+
+exports.unapproved = function(Todo) {
+  return function(req, res) {
+    res.sendfile('views/unapproved.html');
+  }
+};
+
+exports.pup = function(Todo) {
+  return function(req, res) {
+    res.sendfile('views/pup.html');
   }
 };
 
@@ -98,3 +96,18 @@ exports.update = function(Todo) {
     });
   }
 };
+
+// exports.delete = function(req, res) {
+//     var id = req.params.id;
+//     console.log('Deleting todo: ' + id);
+//     db.collection('todos', function(err, collection) {
+//         collection.remove({'_id':new BSON.ObjectID(id)}, {safe:true}, function(err, result) {
+//             if (err) {
+//                 res.send({'error':'An error has occurred - ' + err});
+//             } else {
+//                 console.log('' + result + ' document(s) deleted');
+//                 res.send(req.body);
+//             }
+//         });
+//     });
+// }

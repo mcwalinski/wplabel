@@ -6,3 +6,43 @@ body {
 a {
   color: #00B7FF;
 }
+
+ul{
+	list-style: none;
+}
+
+li {
+	font-family: arial;
+	font-size: 18px;
+	color: #333;
+}
+
+span {
+	font-weight: bold;
+	color: blue;
+}
+
+h2{
+	font-size: 30px;
+	color: #333;
+	font-weight: bold;
+}
+
+h3{
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.approved{
+	color: green;
+}
+
+.unapproved{
+	color: red;
+}
+
+.info{
+	font-weight: bold;
+	color: #333;
+	margin: 0px 0px 0px 20px;
+}

@@ -35,6 +35,9 @@ if ('development' == app.get('env')) {
 
 app.get('/todo/:id', routes.id(Todo));
 app.get('/test', routes.test(Todo));
+app.get('/all', routes.all(Todo));
+app.get('/approved', routes.approved(Todo));
+app.get('/unapproved', routes.unapproved(Todo));
 app.get('/pup', routes.pup(Todo));
 app.get('/', routes.index(Todo));
 app.get('/users', user.list);
@@ -45,7 +48,7 @@ app.put('/todo/:id.json', routes.update(Todo));
 app.post('/todo.json', routes.addTodo(Todo));
 
 // Delete
-app.del('/delete/:id', routes.delete(Todo));
+app.delete('/todo/:id', routes.delete(Todo));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
